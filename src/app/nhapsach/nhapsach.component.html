@@ -1,0 +1,16 @@
+<form class="example-form"> 
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Tên sách" required value="" #name>
+    </mat-form-field>
+  <mat-form-field class="example-full-width" >
+      <input matInput placeholder="Miêu tả" required #description>
+    </mat-form-field>
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Đường dẫn hình ảnh" required #imgURL>
+    </mat-form-field>
+  <mat-form-field class="example-full-width">
+      <input matInput placeholder="Tác giả" required #author>
+    </mat-form-field>
+    <button mat-flat-button (click)='nhapSach(name.value)'>Nhập</button>
+</form> 
+<p>phon : {{ item }}</p>
