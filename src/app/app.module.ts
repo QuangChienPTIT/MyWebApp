@@ -55,7 +55,7 @@ import { XemsachComponent } from './xemsach/xemsach.component';
     MatMenuModule,
     HttpClientModule,
     MatButtonToggleModule,
-    AngularFireModule.initializeApp(environment.firebase,'QCThuVien'),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireDatabase
   ],
