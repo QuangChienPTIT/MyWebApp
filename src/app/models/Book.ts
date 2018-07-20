@@ -3,5 +3,4 @@ export class Book {
     name: String;
     description: String;
     imgURL: String;
-    idAuthor: String;
 }

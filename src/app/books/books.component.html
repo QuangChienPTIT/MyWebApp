@@ -1,0 +1,18 @@
+<mat-toolbar>My Home</mat-toolbar>
+<mat-grid-list cols="4" >
+  <mat-grid-tile *ngFor="let book of books | async">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title><h4>{{book.name}}</h4></mat-card-title>
+      </mat-card-header>
+        <img mat-card-image src="{{book.imgURL}}" alt="{{book.name}}" >
+      <mat-card-actions>
+        <button mat-flat-button class="detailsButton" [routerLink]="['/book/'+book.$key]" >
+          Book Details</button>
+        <button mat-flat-button class="editButton" >
+          Edit Book</button>
+      </mat-card-actions>      
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
