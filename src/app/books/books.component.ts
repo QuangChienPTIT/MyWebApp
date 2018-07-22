@@ -13,17 +13,11 @@ import { FirebaseService } from '../services/firebase.service';
 export class BooksComponent implements OnInit {
 
   books: Observable<any[]>;
-  listBook: Book[];
-  constructor(private firebaseService: FirebaseService,private db:AngularFireDatabase) { 
-    db.database.ref('Book').on('child_added', function(snapshot){
-      // this.listBook = snapshot.val();
-      console.log(snapshot.val())
-    });
+  constructor(private firebaseService: FirebaseService) { 
   }
 
   ngOnInit() {
     this.books=this.firebaseService.getBooks();
-    
 }
 
 }

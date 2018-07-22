@@ -1,0 +1,24 @@
+.container{
+    padding: 16px;
+    font-size: 14px;
+}
+.container > *{
+    width: 100%;
+}
+input{
+    margin-top: 20px;
+}
+button{
+    color: #fff;
+    background-color: #5488c7;
+}
+.col-2{
+    width: 100%;   
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.col-2 *{
+    width: 48%;
+}

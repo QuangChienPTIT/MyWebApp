@@ -1,0 +1,27 @@
+<!-- <div class="container">
+  <h2>ĐỌC NHIỀU</h2>
+  <div class="content">
+    <div class="item" *ngFor="let book of books| async">
+      <a class="title" href='/book/{{book.key}}' matLine>{{book.payload.val().name}}</a>
+      <div>Số chương: {{book.payload.val().numOfChapter}}</div>
+      <div id="description" class="description">{{book.payload.val().description}}</div>
+    </div>
+  </div>
+</div> -->
+
+<mat-list >
+  <mat-list-item id="wrapper" *ngFor="let book of books | async">
+    <div id="thumb">
+      <a href='/book/{{book.key}}'>
+        <img mat-card-image src="{{book.payload.val().imgURL}}">
+      </a>
+    </div>
+    <div id="content">
+      <p>{{book.payload.val().name}}</p>
+      <h5>{{book.payload.val().name}}</h5>
+    </div>
+    <div id="action"></div>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  
+</mat-list>

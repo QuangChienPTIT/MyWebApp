@@ -16,9 +16,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {ReactiveFormsModule } from '@angular/forms'
+import {MatSelectModule} from '@angular/material/select';
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from '../environments/environment';
 
 import 'hammerjs';
@@ -37,12 +42,21 @@ import { Routes, RouterModule } from '../../node_modules/@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BooksComponent } from './books/books.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
+import { AddBookComponent } from './add-book/add-book.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
+import { LoginRegisterDialogComponent } from './account/login-register-dialog/login-register-dialog.component';
+import { LoginComponent } from './account/login/login.component';
+import { RegisterComponent } from './account/register/register.component';
+import { TopviewComponent } from './topview/topview.component';
+import { MoiNhapComponent } from './moi-nhap/moi-nhap.component';
+import { TopFollowerComponent } from './top-follower/top-follower.component';
 const appRoutes:Routes =[
   {path:'',component:AppComponent},
   {path:'home',component:HomeComponent},
   {path:'books',component:BooksComponent},
-  {path:'addbook',component:NhapsachComponent},
-  {path:'book/:id',component:BookDetailComponent}
+  {path:'addbook',component:AddBookComponent},
+  {path:'book/:id',component:BookDetailComponent},
+  {path:'edit-book/:id', component:EditBookComponent},
 ]
 
 @NgModule({
@@ -53,14 +67,25 @@ const appRoutes:Routes =[
     NavbarComponent,
     HomeComponent,
     BooksComponent,
-    BookDetailComponent
+    BookDetailComponent,
+    AddBookComponent,
+    EditBookComponent,
+    LoginRegisterDialogComponent,
+    LoginComponent,
+    RegisterComponent,
+    TopviewComponent,
+    MoiNhapComponent,
+    TopFollowerComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BrowserAnimationsModule,
     MatToolbarModule,
+    ReactiveFormsModule,
     MatButtonModule,
+    MatAutocompleteModule,
+    MatSelectModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
@@ -76,6 +101,11 @@ const appRoutes:Routes =[
     RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase,'QCThuVien'),
     AngularFireDatabaseModule, // imports firebase/firestore, only needed for database features
+    AngularFireStorageModule,
+    AngularFireAuthModule
+  ],
+  entryComponents: [
+    LoginRegisterDialogComponent
   ],
   providers:[FirebaseService],
   bootstrap: [AppComponent]

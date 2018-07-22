@@ -1,0 +1,19 @@
+.addBook {
+    min-width: 150px;
+    max-width: 700px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+  .mat-flat-button{
+    width: 20%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-top: 2em;
+    text-align: center
+  }

@@ -1,3 +1,43 @@
-<p>
-  book-detail works!
-</p>
+<!-- <div class="details-book" >
+     <mat-card>
+             <mat-card-title>
+                     <span >{{(book | async)?.name}}</span>
+             </mat-card-title>
+             <mat-card-content>
+                 <div class="left">
+                         <img src="{{(book | async)?.imgURL}}" />
+                 </div>              
+                 <hr>
+                 <mat-toolbar>Description</mat-toolbar>
+                 {{(book | async)?.description}}
+             </mat-card-content>
+             
+         </mat-card>
+</div> -->
+<div class="details-book" >
+  <mat-card>
+          <mat-card-title>
+                  <span class="mat-headline">{{(book | async)?.name}}</span>
+          </mat-card-title>
+          <mat-card-content>
+              <div class="left">
+                      <img  src="{{(book | async)?.imgURL}}" />
+              </div>
+              <div class="right">
+                  <mat-list>
+                          <mat-list-item> <i class="material-icons">person_pin</i> Author:&nbsp;&nbsp;<b> </b> </mat-list-item>                          
+                          
+                  </mat-list>
+              </div>
+              <hr>
+              <mat-toolbar>Description</mat-toolbar>
+              {{(book | async)?.description}}
+          </mat-card-content>
+          <mat-card-actions>
+              <button [routerLink]="['/books']" mat-raised-button> <i class="material-icons">view_module</i> All Books </button>
+              <button [routerLink]="['/edit-book/'+id]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button> 
+              <button mat-raised-button (click)="openDialog()" color="warn"> Bổ sung số lượng </button>
+          </mat-card-actions>
+      </mat-card>
+</div>
+

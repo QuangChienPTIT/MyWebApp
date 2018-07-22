@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-form-field>
+    <input matInput type="email" #email required placeholder="Email">
+    <mat-icon matSuffix>email</mat-icon>
+  </mat-form-field>
+  <div class="col-2">
+    <mat-form-field>
+      <input matInput type="text" #firstName required placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" #lastName required placeholder="Last Name">
+      <mat-icon matSuffix>face</mat-icon>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <input matInput type="text" #username required placeholder="User Name">
+    <mat-icon matSuffix>account_circle</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" #password required placeholder="Your Password">
+    <mat-icon matSuffix>visibility_off</mat-icon>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" #confirmPass required placeholder="Confirm password">
+    <mat-icon matSuffix>visibility_off</mat-icon>
+  </mat-form-field>
+  <p style="color: red">{{err}}</p>
+  <button mat-button (click)='register(email.value,firstName.value,lastName.value,username.value,password.value)'>REGISTER</button>
+</div>

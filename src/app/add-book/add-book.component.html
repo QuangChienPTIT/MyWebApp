@@ -1,0 +1,38 @@
+
+
+<mat-card class="addBook">
+    <mat-card-title>Add a New Book</mat-card-title>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Tên sách" required value="" #name>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <textarea  mdInput rows="5" matInput placeholder="Miêu tả" required #description></textarea>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Tác giả" [(ngModel)]="idAuthors" name="author" multiple required>
+      <mat-option *ngFor="let author of authors | async" [value]="author.key" >
+        {{author.payload.val().name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select placeholder="Thể Loại" [(ngModel)]="idTheLoais" name="theLoai" multiple required>
+      <mat-option *ngFor="let theLoai of theLoais | async" [value]="theLoai.key" >
+        {{theLoai.payload.val().name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Đường dẫn hình ảnh" value="{{url}}" #imgURL>
+  </mat-form-field>  
+  <mat-form-field>
+    <input matInput type="number" value="1000" placeholder="Giá một cuốn sách" #gia>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="number" maxlength="2" placeholder="Số lượng sách" #soLuong>
+  </mat-form-field>
+  <input type="file" (change)="onImageSelected($event)">
+  <button mat-flat-button (click)='addNewBook(name.value,description.value,imgURL.value,soLuong.value,gia.value)'>Nhập</button>
+</mat-card>
+<a [href]="downloadURL | async">{{ downloadURL | async }}</a>
