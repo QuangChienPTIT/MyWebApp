@@ -50,6 +50,7 @@ import { RegisterComponent } from './account/register/register.component';
 import { TopviewComponent } from './topview/topview.component';
 import { MoiNhapComponent } from './moi-nhap/moi-nhap.component';
 import { TopFollowerComponent } from './top-follower/top-follower.component';
+import { SachMuonComponent } from './sach-muon/sach-muon.component';
 const appRoutes:Routes =[
   {path:'',component:AppComponent},
   {path:'home',component:HomeComponent},
@@ -57,6 +58,7 @@ const appRoutes:Routes =[
   {path:'addbook',component:AddBookComponent},
   {path:'book/:id',component:BookDetailComponent},
   {path:'edit-book/:id', component:EditBookComponent},
+  {path:'sach-muon', component:SachMuonComponent},
 ]
 
 @NgModule({
@@ -76,6 +78,7 @@ const appRoutes:Routes =[
     TopviewComponent,
     MoiNhapComponent,
     TopFollowerComponent,
+    SachMuonComponent,
   ],
   imports: [
     BrowserModule,

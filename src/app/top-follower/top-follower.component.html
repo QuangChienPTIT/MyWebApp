@@ -10,15 +10,15 @@
 </div> -->
 
 <mat-list >
-  <mat-list-item id="wrapper" *ngFor="let book of books | async">
+  <mat-list-item id="wrapper" *ngFor="let book of books ">
     <div id="thumb">
       <a href='/book/{{book.key}}'>
-        <img mat-card-image src="{{book.payload.val().imgURL}}">
+        <img mat-card-image src="{{book.imgURL}}">
       </a>
     </div>
     <div id="content">
-      <p>{{book.payload.val().name}}</p>
-      <h5>{{book.payload.val().name}}</h5>
+      <p>{{book.name}}</p>
+      <h5>{{book.authorName | async}}</h5>
     </div>
     <div id="action"></div>
     <mat-divider></mat-divider>

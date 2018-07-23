@@ -1,0 +1,41 @@
+<!-- 
+<mat-list> 
+<div>
+      <h3 mat-subheader>Sách đang đăng ký mượn</h3>
+    </div>
+    <mat-list-item *ngFor="let sachMuon of sachMuons">
+      <td>
+        <a class="name" width="270px" href="https://truyen.tangthuvien.vn/doc-truyen/thien-kiem-than-de">{{sachMuon.userName | async}}</a>
+      </td>
+
+      <td class="respon">
+        <a class="user" width="270px" href="https://truyen.tangthuvien.vn/tac-gia?author=826">{{sachMuon.bookName}}</a>
+      </td>
+      <td class="respon">
+        <i>15:27 22/07</i>
+      </td>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list> -->
+  
+<mat-card>
+    <input type="text" name="search" placeholder="Search..">
+  <mat-list>
+    <mat-list-item id="wrapper" *ngFor="let sachMuon of sachMuons ">
+        <div class="divimg">      
+          <a href='/book/{{sachMuon.idBook}}'>
+            <img src="{{sachMuon.imgURL}}">
+          </a>
+        </div>
+        <div class="content">
+          <h4>{{sachMuon.bookName}}</h4>
+          <p>{{sachMuon.userName | async}}</p>
+          <p>{{sachMuon.ngayDangKy }}</p>
+        </div>
+        <div class="action">
+            <button mat-flat-button >Phê Duyệt</button>
+          </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    </mat-list>
+</mat-card>
