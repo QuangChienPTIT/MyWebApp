@@ -1,0 +1,33 @@
+.detail{
+    float: left;
+    width: 300px;
+
+}
+.detail2{
+    margin-right: 20px;
+    float: left;
+    width: 300px;
+
+}
+img{
+    width: 200px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 50px;
+}
+#imgBook{
+    width: 100%;
+}
+
+.thongbao{
+    color: red;
+}
+
+h5{
+    margin-top: 20px;
+}
+
+button{
+    margin-left: 10px
+}

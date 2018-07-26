@@ -6,6 +6,8 @@ import { EventEmitter } from "events";
 import { Router } from "@angular/router";
 import { MatDialog } from '../../../node_modules/@angular/material/dialog';
 import { LoginRegisterDialogComponent } from '../account/login-register-dialog/login-register-dialog.component';
+import { AuthService } from '../services/auth.service';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,28 +16,22 @@ import { LoginRegisterDialogComponent } from '../account/login-register-dialog/l
 })
 export class NavbarComponent implements OnInit {
 
-  user: Observable<firebase.User>;
-  authenticated: boolean = false;
-  constructor(public dialog: MatDialog,public af:AngularFireAuth) {
-    
+  constructor(public dialog: MatDialog,public authService:AuthService) {
+      
+
    }
 
   ngOnInit() {
   }
 
-  login(){
-    this.af.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-    this.authenticated=true;
-  }
 
   logout(){
-    this.af.auth.signOut();
-    this.authenticated=false;
+    this.authService.logout();
   }
 
   openDialog(): void {
     const dialogRef = this.dialog.open(LoginRegisterDialogComponent, {
-      width: '400px',
+      width: '700px',
     });
   }
 }

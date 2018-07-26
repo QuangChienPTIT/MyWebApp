@@ -1,0 +1,22 @@
+<mat-card>
+    <!-- <input type="text" name="search" placeholder="Search.." (change)="searchAction(search.value)" #search> -->
+    <h4>Sách đang được mượn</h4>
+  <mat-list>
+    <mat-list-item id="wrapper" *ngFor="let sachMuon of sachMuons ">
+        <div class="divimg">      
+          <a href='/book/{{sachMuon.idBook}}'>
+            <img src="{{sachMuon.imgURL}}">
+          </a>
+        </div>
+        <div class="content">
+          <h4>{{sachMuon.bookName}}</h4>
+          <h5>{{sachMuon.userName | async}}</h5>
+          <p>Ngày mượn : {{sachMuon.ngayMuon | date: 'HH:mm:ss dd-MM-yyyy'}}</p>
+        </div>
+        <div class="action">
+            <button mat-flat-button (click)='traSach(sachMuon.id,sachMuon.idUser,sachMuon.idBook,sachMuon.idQuyenSach,sachMuon.bookName,sachMuon.imgURL,sachMuon.userName,sachMuon.ngayMuon)'>Trả sách</button>
+          </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    </mat-list>
+</mat-card>

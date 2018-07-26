@@ -17,3 +17,18 @@
     margin-top: 2em;
     text-align: center
   }
+mat-form-field{
+  margin-top: 20px;
+}
+.authorselect{
+  float: left;
+}
+.addAuthor{
+  float: left;
+}
+.author{
+  width: 100%;
+}
+.theLoai{
+  width: 100%;
+}

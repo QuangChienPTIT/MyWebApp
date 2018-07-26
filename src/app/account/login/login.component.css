@@ -1,6 +1,8 @@
 .container{
     padding: 16px;
     font-size: 14px;
+    max-width: 100%;
+  width: 700px;
 }
 .container > *{
     width: 100%;

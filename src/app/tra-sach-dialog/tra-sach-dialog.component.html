@@ -1,0 +1,35 @@
+<h1 mat-dialog-title>Trả sách</h1>
+<div mat-dialog-content>
+
+  <div class="detail">
+    <div class="imgBook">
+      <img src="{{data.imgURL}}">
+    </div>
+
+
+
+  </div>
+  <div class="detail2">
+    <h5>Tên sách     : {{data.bookName}}</h5>
+    <h5>Người mượn   : {{userName | async}}</h5>
+    <h5>Mã cuốn sách : {{data.idQuyenSach}}</h5>
+    <h5>Tình trạng   : {{tinhTrang}}</h5>
+    <h5>Giá          : {{data.gia}} đồng</h5>
+    <h5>Ngày mượn    : {{data.ngayMuon | date: 'HH:mm:ss dd-MM-yyyy'}}</h5>
+    <h5 class="thongbao">{{thongBao1}}</h5>
+    <h5 class="thongbao">{{thongBao2}}</h5>    
+    <mat-form-field>
+      <mat-select placeholder="Tình Trạng hiện tại" [(ngModel)]="selectedTinhTrang" name="tinhTrang" required>
+        <mat-option *ngFor="let tinhTrang of tinhTrangs " [value]="tinhTrang.value">
+          {{tinhTrang.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button (click)='kiemtra(data.tinhTrang,data.gia)' color="warn">Kiểm tra</button>
+    <h5 class="thongbao">{{thongBao}}</h5>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn">Hủy bỏ</button>
+  <button mat-raised-button (click)='traSach(data.id,data.idUser,selectedTinhTrang,data.idBook,data.idQuyenSach,tienPhat)' color="warn">Ok</button>
+</div>

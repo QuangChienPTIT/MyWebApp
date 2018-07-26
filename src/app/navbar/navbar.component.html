@@ -6,28 +6,37 @@
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li >
+        <li>
           <a [routerLink]="['/home']">Home</a>
         </li>
-        <li >
+        <li>
           <a [routerLink]="['/books']">Books</a>
         </li>
-        <li >
+        <li>
           <a [routerLink]="['/addbook']">Add Book</a>
         </li>
-        <li >
-          <a [routerLink]="['/sach-muon']">Sách Mượn</a>
+        <li>
+          <a [routerLink]="['/sach-muon']">Mượn Sách</a>
+        </li>
+        <li>
+          <a [routerLink]="['/sach-dang-muon']">Trả sách</a>
+        </li>
+        <li>
+          <a [routerLink]="['/sach-qua-han']">Sách quá hạn</a>
+        </li>
+        <li>
+          <a [routerLink]="['/tai-khoan-khoa']">Tài khoản</a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <p #uid>{{authService.currentUserId }}</p>
         <button mat-button [style.display]=(logged) id="accountRegister" (click)="openDialog()">
-          <mat-icon>exit_to_app</mat-icon> Sign In/ Sign Up</button>
-          <button mat-icon-button [style.display]=(account)>
-            <mat-icon>account_circle</mat-icon>
-          </button>
+          <mat-icon>exit_to_app</mat-icon>Đăng nhập</button>
+        <button mat-icon-button (click)="logout()" id="logout">
+          LogOut
+        </button>
       </ul>
     </div>
   </div>
-
 </nav>

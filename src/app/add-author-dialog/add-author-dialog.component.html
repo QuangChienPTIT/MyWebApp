@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Thêm tác giả</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Tên tác giả" #authorName>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+      <input matInput  placeholder="Miêu tả" #description>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)='addAuthor(authorName.value,description.value)' cdkFocusInitial>Ok</button>
+</div>

@@ -19,6 +19,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {ReactiveFormsModule } from '@angular/forms'
 import {MatSelectModule} from '@angular/material/select';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 import { AngularFireModule } from "angularfire2";
 import { AngularFireDatabaseModule } from "angularfire2/database";
@@ -51,14 +53,25 @@ import { TopviewComponent } from './topview/topview.component';
 import { MoiNhapComponent } from './moi-nhap/moi-nhap.component';
 import { TopFollowerComponent } from './top-follower/top-follower.component';
 import { SachMuonComponent } from './sach-muon/sach-muon.component';
+import { AddAuthorDialogComponent } from './add-author-dialog/add-author-dialog.component';
+import { AddTypeDialogComponent } from './add-type-dialog/add-type-dialog.component';
+import { SachDangMuonComponent } from './sach-dang-muon/sach-dang-muon.component';
+import { AuthService } from './services/auth.service';
+import { TraSachDialogComponent } from './tra-sach-dialog/tra-sach-dialog.component';
+import { SachQuaHanComponent } from './sach-qua-han/sach-qua-han.component';
+import { TaiKhoanKhoaComponent } from './tai-khoan-khoa/tai-khoan-khoa.component';
+import { ThemQuyenSachDialogComponent } from './them-quyen-sach-dialog/them-quyen-sach-dialog.component';
 const appRoutes:Routes =[
-  {path:'',component:AppComponent},
+  {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'books',component:BooksComponent},
   {path:'addbook',component:AddBookComponent},
   {path:'book/:id',component:BookDetailComponent},
   {path:'edit-book/:id', component:EditBookComponent},
   {path:'sach-muon', component:SachMuonComponent},
+  {path:'sach-dang-muon', component:SachDangMuonComponent},
+  {path:'sach-qua-han', component:SachQuaHanComponent},
+  {path:'tai-khoan-khoa', component:TaiKhoanKhoaComponent},
 ]
 
 @NgModule({
@@ -79,6 +92,13 @@ const appRoutes:Routes =[
     MoiNhapComponent,
     TopFollowerComponent,
     SachMuonComponent,
+    AddAuthorDialogComponent,
+    AddTypeDialogComponent,
+    SachDangMuonComponent,
+    TraSachDialogComponent,
+    SachQuaHanComponent,
+    TaiKhoanKhoaComponent,
+    ThemQuyenSachDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +118,7 @@ const appRoutes:Routes =[
     MatCardModule,
     MatGridListModule,
     MatCheckboxModule,
+    MatExpansionModule,
     MatListModule,
     MatMenuModule,
     MatButtonToggleModule,
@@ -108,9 +129,17 @@ const appRoutes:Routes =[
     AngularFireAuthModule
   ],
   entryComponents: [
-    LoginRegisterDialogComponent
+    AddAuthorDialogComponent,
+    AddTypeDialogComponent,
+    LoginRegisterDialogComponent,
+    TraSachDialogComponent,
+    ThemQuyenSachDialogComponent,
   ],
-  providers:[FirebaseService],
+  providers:[
+    FirebaseService,
+    AuthService
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

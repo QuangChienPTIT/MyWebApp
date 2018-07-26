@@ -13,6 +13,7 @@ export class SachMuonComponent implements OnInit {
   sachMuons: any[];
   idQuyenSach: any[]=[];
   bookName: any[]=[];
+  
   constructor(private firebaseService: FirebaseService, private db: AngularFireDatabase) {
 
   }
@@ -24,8 +25,10 @@ export class SachMuonComponent implements OnInit {
         this.sachMuons = [];
         item.forEach(element => {
           var x = element.payload.toJSON();
-          if(x['ngayDangKy']!=null){
-          x['userName']=this.firebaseService.getUserName(snap.key);          
+          x['id']=element.key;
+          x['idUser']=snap.key;
+          if(x['ngayTra'] == null && x['ngayMuon']==null){
+          x['userName']=this.firebaseService.getUserName(x['idUser']);          
           //this.sachMuons.push(x);
           this.db.database.ref('Book').orderByChild("QuyenSach/"+x['idQuyenSach']+'/tinhTrang').startAt(1).on('child_added',(data)=>{
             //console.log(data.val().name);
@@ -56,8 +59,13 @@ export class SachMuonComponent implements OnInit {
     })
 
   }
-
   
+  choMuonSach(id,idUser){
+    
+    
+    this.firebaseService.choMuonSach(id,idUser)
+
+  }
 
 
 }

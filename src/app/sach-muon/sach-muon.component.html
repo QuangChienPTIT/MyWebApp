@@ -29,13 +29,14 @@
         </div>
         <div class="content">
           <h4>{{sachMuon.bookName}}</h4>
-          <p>{{sachMuon.userName | async}}</p>
-          <p>{{sachMuon.ngayDangKy }}</p>
+          <h5>{{sachMuon.userName | async}}</h5>
+          <p>Ngày đăng kí : {{sachMuon.ngayDangKy | date: ' HH:mm:ss dd-MM-yyyy'}}</p>
         </div>
         <div class="action">
-            <button mat-flat-button >Phê Duyệt</button>
+            <button mat-flat-button (click)='choMuonSach(sachMuon.id,sachMuon.idUser)'>Phê Duyệt</button>
           </div>
       <mat-divider></mat-divider>
     </mat-list-item>
     </mat-list>
 </mat-card>
+<p>{{dateNowMilliseconds | date: 'dd-MM-yyyy HH:mm:ss'}}</p>

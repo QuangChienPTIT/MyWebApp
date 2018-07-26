@@ -1,19 +1,27 @@
-<mat-toolbar><input type="text" name="search" placeholder="Search.."></mat-toolbar>
-<mat-grid-list cols="5" rowHeight="2:2.7">
+<mat-card class="container">
+<mat-toolbar>
+  <input type="text" name="search" placeholder="Nhập tiếng việt có dấu." (keyup)="searchAction(search.value)" #search>
+</mat-toolbar>
+<mat-grid-list cols="4" rowHeight="2:3.7">
   <mat-grid-tile *ngFor="let book of books | async">
     <mat-card class="example-card">
-      <mat-card-header>
-        <mat-card-title>{{book.payload.val().name}}</mat-card-title>
-      </mat-card-header>      
-        <img style="width: 100%; height: 85%;"src="{{book.payload.val().imgURL}}" alt="{{book.payload.val().name}}" >
-      <mat-card-actions>
+      <a href="{{'/book/'+book.key}}">
+
+        <img style="width: 100%; height: 85%;" src="{{book.payload.val().imgURL}}" alt="{{book.payload.val().name}}">
+        <!-- <mat-card-actions>
         <button mat-raised-button class="detailsButton" [routerLink]="['/book/'+book.key]" >
           <i class="material-icons">visibility</i>
           Book Details</button>
-        <button mat-raised-button class="themSoLuong" >
+        <button mat-raised-button class="themSoLuong">
             <i class="material-icons">mode_edit</i>
           Thêm</button>
-      </mat-card-actions>      
+      </mat-card-actions>   -->
+        <mat-card-header>
+          <mat-card-title>{{book.payload.val().name}}</mat-card-title>
+        </mat-card-header>
+      </a>
     </mat-card>
   </mat-grid-tile>
 </mat-grid-list>
+<p>{{searchString}}</p>
+</mat-card>

@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
 import { Router } from "@angular/router";
 import { async } from '../../../node_modules/rxjs/internal/scheduler/async';
 import {FormControl} from '@angular/forms';
+import { MatDialog } from '../../../node_modules/@angular/material/dialog';
+import { AddAuthorDialogComponent } from '../add-author-dialog/add-author-dialog.component';
+import { LoginRegisterDialogComponent } from '../account/login-register-dialog/login-register-dialog.component';
+import { AddTypeDialogComponent } from '../add-type-dialog/add-type-dialog.component';
 
 @Component({
   selector: 'app-add-book',
@@ -19,7 +23,7 @@ export class AddBookComponent implements OnInit {
   downloadURL: Observable<String>;
   file;
   url: String;
-  constructor(private firebaseService: FirebaseService,private storage: AngularFireStorage,private router:Router) { }
+  constructor(private firebaseService: FirebaseService,private storage: AngularFireStorage,private router:Router,public dialog: MatDialog) { }
 
   authors: Observable<any[]>;
   theLoais: Observable<any[]>;
@@ -51,5 +55,16 @@ export class AddBookComponent implements OnInit {
     //   this.url = v;
     // });
     // console.log(this.url);
+  }
+
+  openDialogAddAuthor(): void {
+    const dialogRef = this.dialog.open(AddAuthorDialogComponent, {
+      width: '700px',
+    });
+  }
+  openDialogAddType(): void {
+    const dialogRef = this.dialog.open(AddTypeDialogComponent, {
+      width: '700px',
+    });
   }
 }

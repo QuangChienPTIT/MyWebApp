@@ -1,43 +1,82 @@
-<!-- <div class="details-book" >
-     <mat-card>
-             <mat-card-title>
-                     <span >{{(book | async)?.name}}</span>
-             </mat-card-title>
-             <mat-card-content>
-                 <div class="left">
-                         <img src="{{(book | async)?.imgURL}}" />
-                 </div>              
-                 <hr>
-                 <mat-toolbar>Description</mat-toolbar>
-                 {{(book | async)?.description}}
-             </mat-card-content>
-             
-         </mat-card>
-</div> -->
-<div class="details-book" >
-  <mat-card>
-          <mat-card-title>
-                  <span class="mat-headline">{{(book | async)?.name}}</span>
-          </mat-card-title>
-          <mat-card-content>
-              <div class="left">
-                      <img  src="{{(book | async)?.imgURL}}" />
-              </div>
-              <div class="right">
-                  <mat-list>
-                          <mat-list-item> <i class="material-icons">person_pin</i> Author:&nbsp;&nbsp;<b> </b> </mat-list-item>                          
+<!-- <div class="details-book">
+        <mat-card>
+                <mat-card-title>
+                        <span class="mat-headline">{{(book | async)?.name}}</span>
+                </mat-card-title>
+                <mat-card-content>
+                        <div class="left">
+                                <img src="{{(book | async)?.imgURL}}" />
+                        </div>
+                        <div class="right">
+                                <mat-list>
+                          <mat-list-item> {{(book | async)?.name}} </mat-list-item>    
+                          <mat-list-item> <i class="material-icons">person_pin</i> Author:&nbsp;&nbsp;<b> </b> </mat-list-item>   
+                          <mat-list-item> <i class="material-icons">person_pin</i> Author:&nbsp;&nbsp;<b> </b> </mat-list-item>   
+                          <mat-list-item> <i class="material-icons">person_pin</i> Author:&nbsp;&nbsp;<b> </b> </mat-list-item>                         
                           
                   </mat-list>
-              </div>
-              <hr>
-              <mat-toolbar>Description</mat-toolbar>
-              {{(book | async)?.description}}
-          </mat-card-content>
-          <mat-card-actions>
-              <button [routerLink]="['/books']" mat-raised-button> <i class="material-icons">view_module</i> All Books </button>
-              <button [routerLink]="['/edit-book/'+id]"  mat-raised-button class="editButton"> <i class="material-icons">mode_edit</i> Edit </button> 
-              <button mat-raised-button (click)="openDialog()" color="warn"> Bổ sung số lượng </button>
-          </mat-card-actions>
-      </mat-card>
-</div>
+                                <mat-toolbar>Description</mat-toolbar>
+                                {{(book | async)?.description}}
+                        </div>
 
+                </mat-card-content>
+                <mat-card-actions>
+                        <button [routerLink]="['/books']" mat-raised-button>
+                                <i class="material-icons">view_module</i> All Books </button>
+                        <button [routerLink]="['/edit-book/'+id]" mat-raised-button class="editButton">
+                                <i class="material-icons">mode_edit</i> Edit </button>
+                        <button mat-raised-button (click)="openDialog()" color="warn"> Bổ sung số lượng </button>
+                </mat-card-actions>
+        </mat-card>
+</div> -->
+
+<div class="container">
+        <div class="detail">
+                <img src="{{(book | async)?.imgURL}}" />
+                <div class="title">
+                        <h1>{{(book | async)?.name}}</h1>
+                        <div>
+                                <button [routerLink]="['/books']" mat-raised-button>
+                                        <i class="material-icons">view_module</i> Thư Viện</button>
+                                <button mat-raised-button (click)="openDialog()" color="warn"> Bổ sung số lượng </button>
+                        </div>
+                </div>
+        </div>
+        <div class="action">
+                <mat-tab-group (selectedTabChange)="onTabClick($event)">
+                        <mat-tab label="GIỚI THIỆU">
+                                <p id="gioithieu">{{(book | async)?.description}}</p>
+                        </mat-tab>
+                        <mat-tab id="cmt" label="BÌNH LUẬN">
+                                <div id="binhluan">                                        
+                                        <div id="cmtcontent">
+                                                <div class="content" *ngFor="let comment of comments">
+                                                        <div id={{comment.id}} style="display: unset;">
+                                                                <div class="imgComment">
+                                                                        <img id="imgComment" src="{{comment.imgURL | async}}" alt="">
+                                                                </div>
+                                                                <div class="contentComment">
+                                                                        <h4>{{comment.userName | async}} : {{comment.content }}</h4>
+                                                                        
+                                                                </div>
+                                                                <div class="react">
+                                                                        <button (click)='deleteComment(comment.id)' mat-icon-button>
+                                                                                <mat-icon>delete</mat-icon>
+                                                                        </button>
+                                                                </div>
+                                                        </div>
+                                                        <div class="{{comment.id}}" style="display: none">
+                                                                <textarea placeholder="Leave a comment" #commentedit value={{comment.content}}></textarea>
+                                                                <button (click)='updatecomment(comment.id,commentedit.value)' mat-icon-button>
+                                                                        <mat-icon>done</mat-icon>
+                                                                </button>
+                                                        </div>
+                                                </div>
+
+                                        </div>
+
+                                </div>
+                        </mat-tab>
+                </mat-tab-group>
+        </div>
+</div>
