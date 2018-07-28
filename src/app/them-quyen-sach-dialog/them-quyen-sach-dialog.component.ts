@@ -16,7 +16,10 @@ export class ThemQuyenSachDialogComponent implements OnInit {
   }
 
   themSoLuong(gia,soLuong){
+    if(gia!=""&&soLuong!=""){
     this.firebaseService.themSoLuongSach(this.data.id, soLuong, gia);
+    this.dialogRef.close();
+    }
   }
   onNoClick(): void {
     this.dialogRef.close();

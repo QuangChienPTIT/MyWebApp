@@ -26,14 +26,12 @@ export class SachQuaHanComponent implements OnInit {
 
   }
   getList(){
-    this.db.database.ref('SachMuon').on('child_added', snap => {
 
-      this.firebaseService.getListSachMuon(snap.key).subscribe(item => {
+      this.firebaseService.getListSachMuon().subscribe(item => {
         this.sachMuons = [];
         item.forEach(element => {
           var x = element.payload.toJSON();
           x['id']=element.key;
-          x['idUser']=snap.key;
           if (x['ngayTra'] == null &&x['ngayMuon']!=null) {
             x['userName'] = this.firebaseService.getUserName(x['idUser']);
             //this.sachMuons.push(x);
@@ -51,7 +49,6 @@ export class SachQuaHanComponent implements OnInit {
           }
         });
       })
-    })
   }
   khoaTaiKhoan(){
     for (let i of this.sachMuons) {

@@ -1,14 +1,14 @@
 <h1 mat-dialog-title>Bổ sung số lượng</h1>
 <div mat-dialog-content>
   <mat-form-field>
-    <input matInput placeholder="Số lượng" #soLuong>
+    <input matInput placeholder="Số lượng" required #soLuong>
   </mat-form-field>
   <br>
   <mat-form-field>
-      <input matInput  placeholder="Giá một quyển sách" #gia>
+      <input matInput  placeholder="Giá một quyển sách" required #gia>
     </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button (click)='themSoLuong(gia.value,soLuong.value)' cdkFocusInitial>Ok</button>
+  <button mat-button (click)='themSoLuong(gia.value,soLuong.value)' ng-if="(!soLuong.value)">Ok</button>
 </div>

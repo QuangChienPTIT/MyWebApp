@@ -35,6 +35,8 @@
                 <img src="{{(book | async)?.imgURL}}" />
                 <div class="title">
                         <h1>{{(book | async)?.name}}</h1>
+                        <h3>Tổng số lượng : {{tongSoLuong}}</h3>
+                        <h3 >Số lượng còn lại : {{sachMuon.length}} </h3>
                         <div>
                                 <button [routerLink]="['/books']" mat-raised-button>
                                         <i class="material-icons">view_module</i> Thư Viện</button>

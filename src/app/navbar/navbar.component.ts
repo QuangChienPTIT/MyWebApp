@@ -16,12 +16,15 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public dialog: MatDialog,public authService:AuthService) {
+  loginString="Đăng nhập";
+  btnDisable=false;
+  constructor(public dialog: MatDialog,public authService:AuthService,private afAuth: AngularFireAuth) {
       
-
    }
 
   ngOnInit() {
+    
+
   }
 
 

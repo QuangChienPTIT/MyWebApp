@@ -95,7 +95,7 @@ export class TraSachDialogComponent implements OnInit {
   }
 
   traSach(id, idUser, tinhTrang,idBook,idQuyenSach,tienPhat){
-    this.firebaseService.traSach(id, idUser, tinhTrang,idBook,idQuyenSach,tienPhat);
+    this.firebaseService.traSach(id, tinhTrang,idBook,idQuyenSach,tienPhat);
     this.dialogRef.close();
   }
 

@@ -54,6 +54,9 @@ export class FirebaseService {
     return this.db.list('SachMuon').snapshotChanges();
 
   }
+  getSachMuonByQuyenSach(idQuyenSach){
+    return this.db.list('SachMuon/',ref=>ref.orderByChild('idQuyenSach').equalTo(idQuyenSach)).snapshotChanges();
+  }
   getBookDetails(id) {
     return this.db.object('Book/' + id).valueChanges();
   }
@@ -73,8 +76,8 @@ export class FirebaseService {
 
   }
 
-  getListSachMuon(idUser) {
-    return this.db.list('SachMuon/' + idUser).snapshotChanges();
+  getListSachMuon() {
+    return this.db.list('SachMuon' ).snapshotChanges();
   }
 
   getUserName(idUser) {
@@ -104,6 +107,12 @@ export class FirebaseService {
   getBookByQuyenSach(idQuyenSach) {
     return this.db.list('Book', ref => ref.orderByChild("QuyenSach/" + idQuyenSach + '/tinhTrang').startAt(1)).snapshotChanges(['child_added']);
   }
+
+  getAllQuyenSachByBook(idBook){
+    return this.db.list('Book/' + idBook + '/QuyenSach/' ).snapshotChanges();
+  }
+
+ 
 
   getQuyenSach(idBook, idQuyenSach) {
     return this.db.object('Book/' + idBook + '/QuyenSach/' + idQuyenSach).valueChanges();
@@ -189,23 +198,23 @@ export class FirebaseService {
     if (this.isadmin) { this.db.database.ref('Comment/' + idBook + '/' + idComment).remove(); }
   }
 
-  choMuonSach(id, idUser) {
+  choMuonSach(id) {
     if (this.isadmin) {
     this.dateNowMilliseconds = this.dataNow.getTime();
       console.log(this.dateNowMilliseconds);
-      this.db.database.ref('SachMuon/' + idUser + '/' + id + '/ngayMuon').set(this.dateNowMilliseconds + "");
+      this.db.database.ref('SachMuon/' + id + '/ngayMuon').set(this.dateNowMilliseconds + "");
     }
 
   }
-  traSach(id, idUser, tinhTrang,idBook,idQuyenSach,tienPhat) {
+  traSach(id, tinhTrang,idBook,idQuyenSach,tienPhat) {
     if (this.isadmin) {
     this.dateNowMilliseconds = this.dataNow.getTime();
       console.log(this.dateNowMilliseconds);
-      this.db.database.ref('SachMuon/' + idUser + '/' + id + '/ngayTra').set(this.dateNowMilliseconds + "");
-      this.db.database.ref('SachMuon/' + idUser + '/' + id + '/tinhTrangTra').set(tinhTrang);
-      this.db.database.ref('SachMuon/' + idUser + '/' + id + '/tienPhat').set(tienPhat);
+      this.db.database.ref('SachMuon/'  + id + '/ngayTra').set(this.dateNowMilliseconds + "");
+      this.db.database.ref('SachMuon/'  + id + '/tinhTrangTra').set(tinhTrang);
+      this.db.database.ref('SachMuon/'  + id + '/tienPhat').set(tienPhat);
       this.db.database.ref('Book/' + idBook + '/QuyenSach/' + idQuyenSach + '/tinhTrang').set(tinhTrang);
-      this.db.database.ref('Book/' + idBook + '/QuyenSach/' + idQuyenSach + '/dangMuon').set(false);
+      //this.db.database.ref('Book/' + idBook + '/QuyenSach/' + idQuyenSach + '/dangMuon').set(false);
     }
   }
 

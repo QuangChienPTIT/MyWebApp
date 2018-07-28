@@ -16,7 +16,7 @@
           <a [routerLink]="['/addbook']">Add Book</a>
         </li>
         <li>
-          <a [routerLink]="['/sach-muon']">Mượn Sách</a>
+          <a [routerLink]="['/sach-muon']">Sách đăng ký</a>
         </li>
         <li>
           <a [routerLink]="['/sach-dang-muon']">Trả sách</a>
@@ -25,15 +25,16 @@
           <a [routerLink]="['/sach-qua-han']">Sách quá hạn</a>
         </li>
         <li>
-          <a [routerLink]="['/tai-khoan-khoa']">Tài khoản</a>
+          <a [routerLink]="['/tai-khoan-khoa']">Tài khoản Khóa</a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <p #uid>{{authService.currentUserId }}</p>
-        <button mat-button [style.display]=(logged) id="accountRegister" (click)="openDialog()">
-          <mat-icon>exit_to_app</mat-icon>Đăng nhập</button>
-        <button mat-icon-button (click)="logout()" id="logout">
+        <button mat-button [style.display]=(logged) id="accountRegister" (click)="openDialog()" *ngIf="!(afAuth.authState | async)">
+          {{loginString}}</button>
+        <button mat-icon-button (click)="logout()" id="logout" *ngIf="(afAuth.authState | async)">
+            <mat-icon>exit_to_app</mat-icon>
           LogOut
         </button>
       </ul>

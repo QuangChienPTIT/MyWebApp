@@ -19,14 +19,13 @@ export class SachMuonComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.db.database.ref('SachMuon').on('child_added', snap => {
+    
 
-      this.firebaseService.getListSachMuon(snap.key).subscribe(item => {
+      this.firebaseService.getListSachMuon().subscribe(item => {
         this.sachMuons = [];
         item.forEach(element => {
           var x = element.payload.toJSON();
           x['id']=element.key;
-          x['idUser']=snap.key;
           if(x['ngayTra'] == null && x['ngayMuon']==null){
           x['userName']=this.firebaseService.getUserName(x['idUser']);          
           //this.sachMuons.push(x);
@@ -56,14 +55,13 @@ export class SachMuonComponent implements OnInit {
         
 
       })
-    })
 
   }
   
   choMuonSach(id,idUser){
     
-    
-    this.firebaseService.choMuonSach(id,idUser)
+    console.log("Chay den day roi")
+    this.firebaseService.choMuonSach(id)
 
   }
 

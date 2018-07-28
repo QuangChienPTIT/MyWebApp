@@ -3,6 +3,7 @@ import { AngularFireAuth } from '../../../node_modules/angularfire2/auth';
 import { AngularFireDatabase } from '../../../node_modules/angularfire2/database';
 import { Observable } from '../../../node_modules/rxjs';
 import { auth } from '../../../node_modules/firebase';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class AuthService {
   authState: any = null;
   user: Observable<firebase.User>;
   constructor(private afAuth: AngularFireAuth,
-    private db: AngularFireDatabase) {
+    private db: AngularFireDatabase,
+    private router: Router,) {
       this.user=this.afAuth.authState;        
   }
 
@@ -44,7 +46,9 @@ export class AuthService {
       }
       console.log(error);
       // [END_EXCLUDE]
-    })
+    }).then(() => {
+      this.router.navigate(['']);
+   });;
   }
 
   emailLogin(email:string, password:string) {
@@ -68,7 +72,9 @@ export class AuthService {
 
 
   logout() {
-    this.afAuth.auth.signOut();
+    this.afAuth.auth.signOut().then(() => {
+      this.router.navigate(['']);
+   });;
   }
 
 }
