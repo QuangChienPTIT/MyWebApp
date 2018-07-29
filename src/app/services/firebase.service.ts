@@ -200,6 +200,7 @@ export class FirebaseService {
 
   choMuonSach(id) {
     if (this.isadmin) {
+    this.dataNow = new Date();
     this.dateNowMilliseconds = this.dataNow.getTime();
       console.log(this.dateNowMilliseconds);
       this.db.database.ref('SachMuon/' + id + '/ngayMuon').set(this.dateNowMilliseconds + "");
@@ -208,6 +209,7 @@ export class FirebaseService {
   }
   traSach(id, tinhTrang,idBook,idQuyenSach,tienPhat) {
     if (this.isadmin) {
+      this.dataNow = new Date();
     this.dateNowMilliseconds = this.dataNow.getTime();
       console.log(this.dateNowMilliseconds);
       this.db.database.ref('SachMuon/'  + id + '/ngayTra').set(this.dateNowMilliseconds + "");
