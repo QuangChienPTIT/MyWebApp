@@ -30,6 +30,6 @@
   </div>
 </div>
 <div mat-dialog-actions>
-  <button mat-raised-button color="warn">Hủy bỏ</button>
+  <button mat-raised-button color="warn" (click)='closeDialog()'>Hủy bỏ</button>
   <button mat-raised-button (click)='traSach(data.id,data.idUser,selectedTinhTrang,data.idBook,data.idQuyenSach,tienPhat)' color="warn">Ok</button>
 </div>

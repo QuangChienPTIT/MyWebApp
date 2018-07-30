@@ -6,6 +6,8 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
 import { AngularFireAuthModule } from '../../../node_modules/angularfire2/auth';
 import { MatDialog } from '../../../node_modules/@angular/material';
 import { ThemQuyenSachDialogComponent } from '../them-quyen-sach-dialog/them-quyen-sach-dialog.component';
+import { EditBookComponent } from '../edit-book/edit-book.component';
+import { EditBookDialogComponent } from '../edit-book-dialog/edit-book-dialog.component';
 
 
 
@@ -90,6 +92,15 @@ openDialog(): void {
   // this.firebaseService.themSoLuongSach(this.id, 1, 10000);
   const dialogRef = this.dialog.open(ThemQuyenSachDialogComponent, {
     width: '400px',
+    data: {
+      id: this.id
+    }
+  });
+}
+
+openDialogEdit(){
+  const dialogRef = this.dialog.open(EditBookDialogComponent, {
+    width: '900px',
     data: {
       id: this.id
     }

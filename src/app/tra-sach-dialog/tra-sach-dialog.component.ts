@@ -31,7 +31,8 @@ export class TraSachDialogComponent implements OnInit {
   tinhTrangs: TinhTrang[] = [
     { value: 1, viewValue: 'Tốt' },
     { value: 2, viewValue: 'Hư Hỏng Nhẹ' },
-    { value: 3, viewValue: 'Hư Hỏng Nặng' }
+    { value: 3, viewValue: 'Hư Hỏng Nặng' },
+    { value: 3, viewValue: 'Mất sách' }
   ]
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private firebaseService: FirebaseService, private db: AngularFireDatabase,
@@ -96,6 +97,9 @@ export class TraSachDialogComponent implements OnInit {
 
   traSach(id, idUser, tinhTrang,idBook,idQuyenSach,tienPhat){
     this.firebaseService.traSach(id, tinhTrang,idBook,idQuyenSach,tienPhat);
+    this.dialogRef.close();
+  }
+  closeDialog(){
     this.dialogRef.close();
   }
 

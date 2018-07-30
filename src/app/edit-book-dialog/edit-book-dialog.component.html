@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Trả sách</h1>
+<div mat-dialog-content>
+
+  <div class="detail">
+    <div class="imgBook">
+      <img src="{{(book | async)?.imgURL}}">
+    </div>
+
+
+
+  </div>
+  <div class="detail2">
+    <mat-form-field>
+      <input matInput placeholder="Tên sách" value="{{(book | async)?.name}}" #name>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <textarea matInput rows="5" placeholder="Miêu tả" value="{{(book | async)?.description}}" #description></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput  placeholder="Đường dẫn hình ảnh" value= "{{(book | async)?.imgURL}}" #imgURL>
+      </mat-form-field>
+    
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="warn" (click)='closeDialog()'>Hủy bỏ</button>
+  <button mat-raised-button  color="warn" (click)='editBook(name.value,description.value,imgURL.value)'>Ok</button>
+</div>

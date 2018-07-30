@@ -15,16 +15,32 @@ import { AuthService } from '../services/auth.service';
 export class BooksComponent implements OnInit {
   searchString = '';
   books: Observable<any[]>;
+  dataNow: Date = new Date();
+  dateNowMilliseconds=this.dataNow.getTime();
   constructor(private firebaseService: FirebaseService,private authService:AuthService,private db:AngularFireDatabase) {
   }
 
   ngOnInit() {
     this.books = this.firebaseService.getBooks();
+    this.loaiBoSachDangKyQuaHan();
   }
 
   searchAction(searchString){
-    this.books=this.firebaseService.searchBookByName(searchString);
-    
+    this.books=this.firebaseService.searchBookByName(searchString);    
+  }
+  loaiBoSachDangKyQuaHan(){
+    this.firebaseService.getListSachMuon().subscribe(datas=>{
+      datas.forEach(data=>{
+        let a = +data.payload.val()['ngayDangKy'];
+        let b =  this.dateNowMilliseconds;
+        let c = (b-a)/(24*60*60*1000);
+        if(c>7){
+          console.log("Sach tre han : "+data.key+"   "+c);
+          this.firebaseService.deleteSachMuon(data.key);
+        }
+
+      })
+    })
   }
 
 }

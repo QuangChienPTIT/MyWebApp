@@ -23,6 +23,7 @@ mat-card{
     margin-left: auto;
     margin-right: auto;
     width: 800px;
+    min-height: 700px;
 }
 .divimg{
     width: 102px;
@@ -86,4 +87,8 @@ input[type=text] {
 /* When the input field gets focus, change its width to 100% */
 input[type=text]:focus {
     width: 100%;
+}
+
+h4{
+    color: #311b92
 }

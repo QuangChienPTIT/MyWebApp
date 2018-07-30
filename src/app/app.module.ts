@@ -61,6 +61,7 @@ import { TraSachDialogComponent } from './tra-sach-dialog/tra-sach-dialog.compon
 import { SachQuaHanComponent } from './sach-qua-han/sach-qua-han.component';
 import { TaiKhoanKhoaComponent } from './tai-khoan-khoa/tai-khoan-khoa.component';
 import { ThemQuyenSachDialogComponent } from './them-quyen-sach-dialog/them-quyen-sach-dialog.component';
+import { EditBookDialogComponent } from './edit-book-dialog/edit-book-dialog.component';
 const appRoutes:Routes =[
   {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
@@ -99,6 +100,7 @@ const appRoutes:Routes =[
     SachQuaHanComponent,
     TaiKhoanKhoaComponent,
     ThemQuyenSachDialogComponent,
+    EditBookDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,6 +136,7 @@ const appRoutes:Routes =[
     LoginRegisterDialogComponent,
     TraSachDialogComponent,
     ThemQuyenSachDialogComponent,
+    EditBookDialogComponent,
   ],
   providers:[
     FirebaseService,

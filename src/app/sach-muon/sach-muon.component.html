@@ -29,7 +29,7 @@
         </div>
         <div class="content">
           <h4>{{sachMuon.bookName}}</h4>
-          <h5>{{sachMuon.userName | async}}</h5>
+          <h5>Người đăng ký : {{sachMuon.userName | async}}</h5>
           <p>Ngày đăng kí : {{sachMuon.ngayDangKy | date: ' HH:mm:ss dd-MM-yyyy'}}</p>
         </div>
         <div class="action">
@@ -39,4 +39,3 @@
     </mat-list-item>
     </mat-list>
 </mat-card>
-<p>{{dateNowMilliseconds | date: 'dd-MM-yyyy HH:mm:ss'}}</p>

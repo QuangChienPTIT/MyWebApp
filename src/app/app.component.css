@@ -1,0 +1,17 @@
+.my-app{
+    background: url(../assets/image/backgound.jpg);    
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+mat-grid-tile .grid-content {
+    /* align-self: flex-start; */
+    padding: 16px;
+    height: 100px;
+}
+mat-icon{
+    vertical-align: bottom;
+}
+p{
+    color: cornflowerblue   
+}

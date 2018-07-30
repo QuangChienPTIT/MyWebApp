@@ -1,1 +1,12 @@
 li{ list-style: none;}
+.navbar{
+    background-color: #0288d1;
+    
+}
+.navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #5eb8ff;
+}
+a{
+    color: white;
+}
+

@@ -41,8 +41,12 @@ export class FirebaseService {
 
   searchBookByName(searchString){
     return this.db.list('Book',ref=>ref.orderByChild('name').startAt(searchString).endAt(searchString+'\uf8ff')).snapshotChanges();
+
   }
 
+  getBookById(id){
+    return this.db.object('Book/'+id).valueChanges();
+  }
   
 
   searchUserByName(searchString){
@@ -193,7 +197,24 @@ export class FirebaseService {
       }
     }
   }
+  //edit
+  editBook(id,name,description,imgURL){
+    if(this.isadmin){
+      this.db.database.ref('Book/'+id+'/name').set(name);
+      this.db.database.ref('Book/'+id+'/description').set(description);
+      this.db.database.ref('Book/'+id+'/imgURL').set(imgURL);
+    }
+  }
+
+
+
   //delete
+
+  deleteSachMuon(id){
+    if(this.isadmin){
+      this.db.database.ref('SachMuon/'+id).remove();
+    }
+  }
   deleteComment(idComment, idBook) {
     if (this.isadmin) { this.db.database.ref('Comment/' + idBook + '/' + idComment).remove(); }
   }
