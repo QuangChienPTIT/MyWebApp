@@ -44,6 +44,10 @@ export class FirebaseService {
 
   }
 
+  searchSachMuonByidUser(searchString){
+    return this.db.list('SachMuon',ref=>ref.orderByChild('idUser').startAt(searchString).endAt(searchString+'\uf8ff')).snapshotChanges();
+  }
+
   getBookById(id){
     return this.db.object('Book/'+id).valueChanges();
   }

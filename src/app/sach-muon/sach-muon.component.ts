@@ -65,5 +65,28 @@ export class SachMuonComponent implements OnInit {
 
   }
 
+  searchAction(searchString){
+    this.firebaseService.searchSachMuonByidUser(searchString).subscribe(item => {
+      this.sachMuons = [];
+      item.forEach(element => {
+        var x = element.payload.toJSON();
+        x['id']=element.key;
+        if(x['ngayTra'] == null && x['ngayMuon']==null){
+        x['userName']=this.firebaseService.getUserName(x['idUser']);          
+        //this.sachMuons.push(x);
+        this.db.database.ref('Book').orderByChild("QuyenSach/"+x['idQuyenSach']+'/tinhTrang').startAt(1).on('child_added',(data)=>{
+          //console.log(data.val().name);
+          x['bookName']=data.val().name;
+          x['imgURL']=data.val().imgURL;
+          x['idBook']=data.key;
+          this.sachMuons.push(x);
+          for(let i of this.sachMuons){
+            console.log(i['bookName']);
+          }
+        });
+      }
+      });
+    });
+  }
 
 }

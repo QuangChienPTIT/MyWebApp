@@ -19,7 +19,9 @@
   </mat-list> -->
   
 <mat-card>
-    <input type="text" name="search" placeholder="Search..">
+    <mat-toolbar>
+        <input type="text" name="search" placeholder="Nhập tiếng việt có dấu." (keyup)="searchAction(search.value)" #search>
+      </mat-toolbar>
   <mat-list>
     <mat-list-item id="wrapper" *ngFor="let sachMuon of sachMuons ">
         <div class="divimg">      
@@ -30,7 +32,9 @@
         <div class="content">
           <h4>{{sachMuon.bookName}}</h4>
           <h5>Người đăng ký : {{sachMuon.userName | async}}</h5>
-          <p>Ngày đăng kí : {{sachMuon.ngayDangKy | date: ' HH:mm:ss dd-MM-yyyy'}}</p>
+          <h5>Mã User : {{sachMuon.idUser}}</h5>
+          <h5>Mã quyển sách : {{sachMuon.idQuyenSach}}</h5>
+          <h5>Ngày đăng kí : {{sachMuon.ngayDangKy | date: ' HH:mm:ss dd-MM-yyyy'}}</h5>
         </div>
         <div class="action">
             <button mat-flat-button (click)='choMuonSach(sachMuon.id)'>Phê Duyệt</button>
